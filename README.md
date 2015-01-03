@@ -44,7 +44,7 @@ To compare the 6 different output files the program creates a table such as belo
 | --- | ------------------------ |  ---------------------- |
 |  1  |        -1, +1            |           -             |
 |  2  |        -1                |         C, F            |   
-|  3  |        +1, -1            |           -             |
+|  3  |        -1                |         A, C            |
 |  4  |        +1                |           B             | 
 |  5  |        -1                |           -             | 
 |  6  |        +1                |           B             |   
