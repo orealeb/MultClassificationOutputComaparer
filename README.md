@@ -5,8 +5,8 @@ MultClassificationOutputComaparer
 
 ###Input  
 * Number of implementations, location of output file for different implementations 
-* Optional param  print output comparison result to new text file, 
-* Print (differing predictions) missed test cases for selected implemenation
+* (Optional) Print output comparison result to new text file, 
+* (Optional) Print (differing predictions) missed test cases for selected implemenation
 
 Input file format- classification labels/predictions listed vertically in file 
 	
@@ -50,7 +50,7 @@ To compare the 6 different output files the program creates a table such as belo
 |  6  |        +1                |           B             |   
 	
 
-Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B 
+	Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B 
 
 
 | ID  |  Most common prediction  |  B's prediction   |
