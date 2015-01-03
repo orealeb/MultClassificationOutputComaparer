@@ -3,18 +3,22 @@ MultClassificationOutputComaparer
 
 
 
-	input  number of implementations, location of output file for different implementations 
-	optional param  print output comparison result to new text file, 
-	print (differing predictions) missed test cases for selected implemenation
+###Input  
+* Number of implementations, location of output file for different implementations 
+* Optional param  print output comparison result to new text file, 
+* Print (differing predictions) missed test cases for selected implemenation
 
-	input file format- classification labels/predictions listed vertically in file e.g
+Input file format- classification labels/predictions listed vertically in file 
 	
+	
+Example of usage:
+
 	6
 	*file paths*
 	Y
 	2
 	
-	To compare the 6 different output files the program creates a table such as below 
+To compare the 6 different output files the program creates a table such as below 
 	
 	
 | ID  |  A  |  B  |  C  |  D  |  E  |  F  |
@@ -30,10 +34,10 @@ MultClassificationOutputComaparer
 	
 	
 	
-	output 
-	Number of disparities in rows of input files = 3
-	input file with most number of disparities = input file 2 (B)
-	input file with least number of disparities = input file 1,4,5 (A,D,E)
+###Output 
+* Number of disparities in rows of input files = 3
+* input file with most number of disparities = input file 2 (B)
+* input file with least number of disparities = input file 1,4,5 (A,D,E)
 	
 
 | ID  |  Most common prediction  |  Differing predictions  |
@@ -46,7 +50,9 @@ MultClassificationOutputComaparer
 |  6  |        +1                |           B             |   
 	
 
-	Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B 
+Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B 
+
+
 | ID  |  Most common prediction  |  B's prediction   |
 | --- | ------------------------ |  ---------------- |
 |  4  |        +1                |         -1        | 
