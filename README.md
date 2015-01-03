@@ -46,7 +46,7 @@ MultClassificationOutputComaparer
 	|  6 |        +1               :|           B            :|   
 	
 
-Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B:
+	Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B:
 	| ID |  Most common prediction  |  B's prediction  :|
 	| -- |:------------------------:|  ----------------:|
 	|  4 |        +1               :|         -1       :| 
