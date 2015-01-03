@@ -17,14 +17,14 @@ MultClassificationOutputComaparer
 	
 	To compare the 6 different output files the program creates a table such as below:
 	
-| ID |  A  |  B  |  C  |  D  |  E  |  F  |
-| -- |:---:|:---:|:---:|:---:|:---:| ---:|
-|  1 |  -1 |  -1 |  -1 |  +1 |  +1 |  +1 |
-|  2 |  -1 |  -1 |  +1 |  -1 |  -1 |  +1 |
-|  3 |  +1 |  -1 |  +1 |  -1 |  -1 |  -1 |
-|  4 |  +1 |  -1 |  +1 |  +1 |  +1 |  +1 |
-|  5 |  -1 |  -1 |  -1 |  -1 |  -1 |  -1 |
-|  6 |  +1 |  -1 |  +1 |  +1 |  +1 |  +1 |
+	| ID |  A  |  B  |  C  |  D  |  E  |  F  |
+	| -- |:---:|:---:|:---:|:---:|:---:| ---:|
+	|  1 |  -1 |  -1 |  -1 |  +1 |  +1 |  +1 |
+	|  2 |  -1 |  -1 |  +1 |  -1 |  -1 |  +1 |
+	|  3 |  +1 |  -1 |  +1 |  -1 |  -1 |  -1 |
+	|  4 |  +1 |  -1 |  +1 |  +1 |  +1 |  +1 |
+	|  5 |  -1 |  -1 |  -1 |  -1 |  -1 |  -1 |
+	|  6 |  +1 |  -1 |  +1 |  +1 |  +1 |  +1 |
 
 	
 	
@@ -36,18 +36,18 @@ MultClassificationOutputComaparer
 	input file with least number of disparities = input file 1,4,5 (A,D,E)
 	
 
-| ID |  Most common prediction  |  Differing predictions :|
-| -- |:------------------------:|  ----------------------:|
-|  1 |        -1, +1           :|           -            :|
-|  2 |        -1               :|         C, F           :|   
-|  3 |        +1, -1           :|           -            :|
-|  4 |        +1               :|           B            :| 
-|  5 |        -1               :|           -            :| 
-|  6 |        +1               :|           B            :|   
+	| ID |  Most common prediction  |  Differing predictions :|
+	| -- |:------------------------:|  ----------------------:|
+	|  1 |        -1, +1           :|           -            :|
+	|  2 |        -1               :|         C, F           :|   
+	|  3 |        +1, -1           :|           -            :|
+	|  4 |        +1               :|           B            :| 
+	|  5 |        -1               :|           -            :| 
+	|  6 |        +1               :|           B            :|   
 	
 
 Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B:
-| ID |  Most common prediction  |  B's prediction  :|
-| -- |:------------------------:|  ----------------:|
-|  4 |        +1               :|         -1       :| 
-|  6 |        +1               :|         -1       :| 
+	| ID |  Most common prediction  |  B's prediction  :|
+	| -- |:------------------------:|  ----------------:|
+	|  4 |        +1               :|         -1       :| 
+	|  6 |        +1               :|         -1       :| 
