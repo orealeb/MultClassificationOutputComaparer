@@ -50,7 +50,7 @@ To compare the 6 different output files the program creates a table such as belo
 |  6  |        +1                |           B             |   
 	
 
-Since 2 was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B 
+Since '2' was selected in the optional paramter, the program prints out the differing predictions (missed prediction cases) for B 
 
 
 | ID  |  Most common prediction  |  B's prediction   |
