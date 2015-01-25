@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,17 +11,20 @@ import java.util.Scanner;
 
 public class Comparer {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 
 		Scanner scan = new Scanner(System.in);
 
 		// System.out.println("Enter # of implementations: ");
-		int numImplementations = 6;// scan.nextInt();
+		int numImplementations = 4;// scan.nextInt();
 		int printImplementation = 2;
 		int currImplementation = 0;
 
 		ArrayList<ArrayList<String>> implementationOuput = new ArrayList<ArrayList<String>>();
-
+		PrintWriter writer = new PrintWriter("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\comparison_result", "UTF-8");
+		//writer.println("The first line");
+		//writer.println("The second line");
+		//writer.close();
 		/**
 		 * while(currImplementation < numImplementations) {
 		 * System.out.println("Enter ouput file path {" + (currImplementation+1)
@@ -28,26 +34,29 @@ public class Comparer {
 		 * currImplementation++; }
 		 **/
 		implementationOuput
-				.add(readFile("C:\\Users\\Oreoluwa\\Desktop\\research latest\\A.txt"));
+				.add(readFile("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\knime_adult.csv"));
 		implementationOuput
-				.add(readFile("C:\\Users\\Oreoluwa\\Desktop\\research latest\\B.txt"));
+				.add(readFile("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\naivebayesdataminer_adult.csv"));
 		implementationOuput
-				.add(readFile("C:\\Users\\Oreoluwa\\Desktop\\research latest\\C.txt"));
+				.add(readFile("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\rapidminer_adult.csv"));
 		implementationOuput
-				.add(readFile("C:\\Users\\Oreoluwa\\Desktop\\research latest\\D.txt"));
-		implementationOuput
-				.add(readFile("C:\\Users\\Oreoluwa\\Desktop\\research latest\\E.txt"));
-		implementationOuput
-				.add(readFile("C:\\Users\\Oreoluwa\\Desktop\\research latest\\F.txt"));
+				.add(readFile("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\sharpclassifier_adult.csv"));
+		//implementationOuput
+				//.add(readFile("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\knime_adult"));
+		//implementationOuput
+				//.add(readFile("C:\\Users\\alebios2\\Desktop\\Adult Dataset output\\knime_adult"));
 
 		String[] labels = new String[implementationOuput.size()];
 		ArrayList<ArrayList<Integer>> implementationMissedCases = new ArrayList<ArrayList<Integer>>();
 		HashMap<String, Integer> dictionary;
 		int i = 0, j = 0;
-		while (i < implementationOuput.size()) {
+		while (i < implementationOuput.get(0).size()) {
 			dictionary = new HashMap<String, Integer>();
 			j = 0;
-			while (j < implementationOuput.get(i).size()) {
+			while (j < numImplementations){//implementationOuput.get(i).size()) {
+				
+				//System.out.print(j + " " + " " + implementationOuput.get(j).get(i).toString() + " " + " " + implementationOuput.get(i).size());
+
 				if (dictionary.containsKey(implementationOuput.get(j).get(i))) {
 					Integer val = (Integer) dictionary.get(implementationOuput
 							.get(j).get(i));
@@ -67,8 +76,8 @@ public class Comparer {
 			}
 
 			for (int l = 0; l < commonPrediction.size(); l++)
-				System.out.print(commonPrediction.get(l) + " ");
-			System.out.println();
+				writer.print(commonPrediction.get(l) + " ");
+			writer.println();
 
 			ArrayList<Integer> missedCases = new ArrayList<Integer>();
 
@@ -86,7 +95,7 @@ public class Comparer {
 
 		for (int l = 0; l < implementationMissedCases.size(); l++) {
 			for (int k = 0; k < implementationMissedCases.get(l).size(); k++) {
-				System.out.print((implementationMissedCases.get(l).get(k) + 1)
+				writer.print((implementationMissedCases.get(l).get(k) + 1)
 						+ " ");
 				/**
 				 * if(implementationMissedCases.get(l).get(k)+1 ==
@@ -95,10 +104,10 @@ public class Comparer {
 				 * }
 				 **/
 			}
-			System.out.println();
+			writer.println();
 
 		}
-
+		writer.close();
 		// input: number of implementations, location of output file for
 		// different implementations,
 		// optional param: print output comparison result to new txt file
