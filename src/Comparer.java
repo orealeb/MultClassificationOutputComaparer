@@ -228,12 +228,7 @@ public class Comparer {
 		for(int i = 0; i < numLabels; i++)
 		{
 			 if (commonPrediction.size() < 2 && commonPrediction.contains(Integer.toString(i))) {
-				
-				/** if(i ==7)
-				 {
-					 i=7;
-				 }**/
-				 
+
 				 if (commonPrediction.contains(implementationPrediction)) {
 						
 						if (stats.containsKey(i+"correct")) {
