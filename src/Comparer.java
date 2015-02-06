@@ -13,17 +13,20 @@ import java.util.Scanner;
 public class Comparer {
 
 	//poker dataset stats variables
-	static HashMap<String, Integer> stats;
+	static ArrayList<HashMap<String, Integer>> stats;
 
 
 	public static void main(String[] args) throws IOException {
 
 		Scanner scan = new Scanner(System.in);
-		stats = new HashMap<String, Integer>();
+		stats = new ArrayList<HashMap<String, Integer>>();
 		// System.out.println("Enter # of implementations: ");
 		int numImplementations = 9;// scan.nextInt();
-		int printImplementation = 1;
+		int printImplementation = 4;
 		int currImplementation = 0;
+
+		for(int i =0; i < numImplementations; i++)
+			stats.add(new HashMap<String, Integer>());
 
 		ArrayList<ArrayList<String>> implementationOuput = new ArrayList<ArrayList<String>>();
 		//PrintWriter writer = new PrintWriter("C:\\Users\\alebios2\\Desktop\\Poker Dataset\\comparison_result", "UTF-8");
@@ -133,7 +136,7 @@ public class Comparer {
 			 
 			 
 			 //poker data set obtain fp or tp for class labels  0 to 9
-			updatePokerDatasetStats(commonPrediction,labels[printImplementation],10);
+			updatePokerDatasetStats(commonPrediction,labels,10);
 			 
 			 
 			implementationMissedCases.add(missedCases);
@@ -175,14 +178,18 @@ public class Comparer {
 			
 		}
 		
-		writer2.println("Implementation " + printImplementation + " Details:");
-		for (String name: stats.keySet()){
+		for(int k = 0; k < labels.length; k++)
+		{
+		writer2.println();
+		writer2.println("Implementation " + k + " Details:");
+		for (String name: stats.get(k).keySet()){
 
             String key =name.toString();
-            String value = stats.get(name).toString();  
+            String value = stats.get(k).get(name).toString();  
             writer2.println(key + " " + value);  
 
 
+		}
 		}
 		writer2.close();
 
@@ -222,30 +229,33 @@ public class Comparer {
 	}
 	
 	
-	static void updatePokerDatasetStats(ArrayList<String>commonPrediction, String implementationPrediction, int numLabels)
+	static void updatePokerDatasetStats(ArrayList<String>commonPrediction, String[] labels, int numLabels)
 	{
 	
+		for(int j = 0; j < labels.length; j++)
+		{
 		for(int i = 0; i < numLabels; i++)
 		{
 			 if (commonPrediction.size() < 2 && commonPrediction.contains(Integer.toString(i))) {
-
-				 if (commonPrediction.contains(implementationPrediction)) {
+				 
+				 if (commonPrediction.contains(labels[j])) {
 						
-						if (stats.containsKey(i+"correct")) {
-							Integer val = (Integer) stats.get(i+"correct");
-							stats.put(i+"correct", val + 1);
+						if (stats.get(j).containsKey(i+"-correct")) {
+							Integer val = (Integer) stats.get(j).get(i+"-correct");
+							stats.get(j).put(i+"-correct", val + 1);
 						} else
-							stats.put(i+"correct", 1);
+							stats.get(j).put(i+"-correct", 1);
 					}
 					else
-						if (stats.containsKey(i+"misclassify")) {
-							Integer val = (Integer) stats.get(i+"misclassify");
-							stats.put(i+"misclassify", val + 1);
+						if (stats.get(j).containsKey(i+"-incorrect")) {
+							Integer val = (Integer) stats.get(j).get(i+"-incorrect");
+							stats.get(j).put(i+"-incorrect", val + 1);
 						} else
-							stats.put(i+"misclassify", 1);
+							stats.get(j).put(i+"-incorrect", 1);
 					}
 			
 			
+		}
 		}
 		
 	
