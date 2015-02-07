@@ -137,7 +137,8 @@ public class Comparer {
 			 
 			 //poker data set obtain fp or tp for class labels  0 to 9
 			updatePokerDatasetStats(commonPrediction,labels,10);
-			 
+			//updateAdultDatasetStats(commonPrediction,labels,2);
+
 			 
 			implementationMissedCases.add(missedCases);
 			i++;
@@ -252,6 +253,41 @@ public class Comparer {
 							stats.get(j).put(i+"-incorrect", val + 1);
 						} else
 							stats.get(j).put(i+"-incorrect", 1);
+					}
+			
+			
+		}
+		}
+		
+	
+	}
+	static void updateAdultDatasetStats(ArrayList<String>commonPrediction, String[] labels, int numLabels)
+	{
+		String[] labelsOption = new String[2];
+		labelsOption[0] =">50K";
+		labelsOption[1] ="<=50K";
+
+	
+		for(int j = 0; j < labels.length; j++)
+		{
+		for(int i = 0; i < numLabels; i++)
+		{				 	
+			 if (commonPrediction.size() < 2 && commonPrediction.contains(labelsOption[i])) {
+				 
+				 if (commonPrediction.contains(labels[j])) {
+						
+						if (stats.get(j).containsKey(labelsOption[i]+"-correct")) {
+							Integer val = (Integer) stats.get(j).get(labelsOption[i]+"-correct");
+							stats.get(j).put(labelsOption[i]+"-correct", val + 1);
+						} else
+							stats.get(j).put(labelsOption[i]+"-correct", 1);
+					}
+					else
+						if (stats.get(j).containsKey(labelsOption[i]+"-incorrect")) {
+							Integer val = (Integer) stats.get(j).get(labelsOption[i]+"-incorrect");
+							stats.get(j).put(labelsOption[i]+"-incorrect", val + 1);
+						} else
+							stats.get(j).put(labelsOption[i]+"-incorrect", 1);
 					}
 			
 			
